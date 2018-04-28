@@ -2,8 +2,8 @@ import {
 	Navbar,
 	Nav,
 	NavItem,
-	NavDropdown,
-    MenuItem
+  NavDropdown,
+  MenuItem
 } from 'react-bootstrap';
 
 import React from 'react';
