@@ -3,29 +3,14 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import MyMapComponent from './Map';
+import NavBar from './NavBar.jsx';
 
 class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div>
-					<ol>
-						<li>
-							<Link to="/">Home</Link>
-						</li>
-						<li>
-							<Link to="/about">About</Link>
-						</li>
-						<li>
-							<Link to="/topics">Topics</Link>
-						</li>
-						<li>
-							<Link to="/map"> Map </Link>
-						</li>
-					</ol>
-
-					<hr />
-
+				<div>	
+					<NavBar />
 					<Route exact path="/" component={Home} />
 					<Route path="/about" component={About} />
 					<Route path="/topics" component={Topics} />
@@ -37,7 +22,7 @@ class App extends Component {
 }
 const Mapper = () => (
 	<div>
-		<MyMapComponent isMarkerShown />{' '}
+		<MyMapComponent isMarkerShown={true} />
 	</div>
 );
 const Home = () => (
