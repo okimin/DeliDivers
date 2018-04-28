@@ -10,7 +10,7 @@ import {
 
 const MyMap = props => (
 	<GoogleMap
-		defaultZoom={8}
+		defaultZoom={12}
 		defaultCenter={{ lat: 40.7128, lng: -74.006 }}
 		defaultOptions={{ styles: mapStyles }}
 	>
@@ -25,7 +25,7 @@ const MyMapComponent = compose(
 		googleMapURL:
 			'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
 		loadingElement: <div style={{ height: `100%` }} />,
-		containerElement: <div style={{ height: `400px` }} />,
+		containerElement: <div style={{ height: `65vh` }} />,
 		mapElement: <div style={{ height: `100%` }} />,
 	}),
 	withScriptjs,
