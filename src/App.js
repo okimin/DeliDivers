@@ -39,7 +39,7 @@ class App extends Component {
 }
 const Mapper = () => (
 	<div>
-		<MyMapComponent isMarkerShown={true} />{' '}
+		<MyMapComponent isMarkerShown={true} />
 	</div>
 );
 const Home = () => (
