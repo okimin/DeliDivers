@@ -1,6 +1,6 @@
 import React from 'react';
 import  { Image } from 'react-bootstrap';
-
+import './DeliStore.css'
 const item = {
 	name:"Astoria Park Mobile Food Truck",
 	location:"Shore Blvd., Hoyt Ave. and Ditmars Blvd",
@@ -31,9 +31,19 @@ const item = {
 
 const DeliPage = () => (
 	<div>
-		<Image src={item.image} rounded/>
-
+		 
+		 <Image className="deli-image" src={item.image} circle />
+		
+		
+		<header>
+		<h2>	
 		{item.name}
+		</h2>
+		
+    <h3>{item.location}</h3>
+    
+    <p>{item.description}</p>
+  </header>
 		
 
 	</div>
