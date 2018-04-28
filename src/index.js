@@ -17,5 +17,7 @@ var config = {
 
 firebase.initializeApp(config);
 
+export const items = firebase.database().ref('/');
+
 ReactDOM.render(<App />, document.getElementById('root'));
 registerServiceWorker();

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { compose, withProps } from 'recompose';
 import mapStyles from './mapStyles.json';
 import {
@@ -7,18 +7,43 @@ import {
 	GoogleMap,
 	Marker,
 } from 'react-google-maps';
+import { items } from './index';
 
-const MyMap = props => (
-	<GoogleMap
-		defaultZoom={12}
-		defaultCenter={{ lat: 40.7128, lng: -74.006 }}
-		defaultOptions={{ styles: mapStyles }}
-	>
-		{props.isMarkerShown && (
-			<Marker position={{ lat: 40.7128, lng: -74.006 }} />
-		)}
-	</GoogleMap>
-);
+class MyMap extends Component {
+	constructor() {
+		super();
+		this.state = {
+			markers: [],
+		};
+	}
+
+	componentDidMount() {
+		const markers = items.on('value', snap =>
+			this.setState({ markers: snap.val() })
+		);
+	}
+
+	render() {
+		return (
+			<GoogleMap
+				defaultZoom={12}
+				defaultCenter={{ lat: 40.7128, lng: -74.006 }}
+				defaultOptions={{ styles: mapStyles }}
+			>
+				{this.props.isMarkerShown &&
+					this.state.markers.map((marker, index) => {
+						const lat = parseFloat(
+							(((marker.locations || {}).location || [])[0] || {}).lat
+						);
+						const lng = parseFloat(
+							(((marker.locations || {}).location || [])[0] || {}).lng
+						);
+						return <Marker key={index} position={{ lat, lng }} />;
+					})}
+			</GoogleMap>
+		);
+	}
+}
 
 const MyMapComponent = compose(
 	withProps({
