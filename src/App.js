@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import MyMapComponent from './Map';
+import NavBar from './NavBar.jsx';
 
 class App extends Component {
 	render() {
@@ -23,6 +24,7 @@ class App extends Component {
 							<Link to="/map"> Map </Link>
 						</li>
 					</ol>
+					<NavBar />
 
 					<hr />
 
@@ -37,7 +39,7 @@ class App extends Component {
 }
 const Mapper = () => (
 	<div>
-		<MyMapComponent isMarkerShown />{' '}
+		<MyMapComponent isMarkerShown={true} />{' '}
 	</div>
 );
 const Home = () => (
