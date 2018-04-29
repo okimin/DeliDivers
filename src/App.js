@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
 import MyMapComponent from './MapContainer';
+import DeliStore from './DeliStore';
 import NavBar from './NavBar.jsx';
 
 class App extends Component {
@@ -15,6 +16,7 @@ class App extends Component {
 					<Route path="/about" component={About} />
 					<Route path="/topics" component={Topics} />
 					<Route path="/map" component={Mapper} />
+					<Route path="/store" component={DeliStore} />
 				</div>
 			</Router>
 		);
