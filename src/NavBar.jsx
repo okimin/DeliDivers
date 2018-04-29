@@ -5,29 +5,31 @@ import {
   NavDropdown,
   MenuItem
 } from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
+import './nav.css';
 import React from 'react';
 
 const NavBar = () =>(
-<Navbar>
-  <Navbar.Header>
-    <Navbar.Brand>
-      <a href="#home">React-Bootstrap</a>
-    </Navbar.Brand>
-  </Navbar.Header>
-  <Nav>
+<Navbar inverse>
+  <Nav pullRight>
     <NavItem eventKey={1} href="#">
-      Link
+      <Link to="/">Home</Link>
     </NavItem>
     <NavItem eventKey={2} href="#">
-      Link
+      <Link to="/about">About</Link>
     </NavItem>
-    <NavDropdown eventKey={3} title="Dropdown" id="basic-nav-dropdown">
-      <MenuItem eventKey={3.1}>Action</MenuItem>
-      <MenuItem eventKey={3.2}>Another action</MenuItem>
-      <MenuItem eventKey={3.3}>Something else here</MenuItem>
-      <MenuItem divider />
-      <MenuItem eventKey={3.4}>Separated link</MenuItem>
+    <NavItem eventKey={3} href="#">
+      <Link to="/map"> Map </Link>
+    </NavItem>
+    <NavItem eventKey={4} href="#">
+      <Link to="/store"> Delis </Link>
+    </NavItem>
+    <NavItem eventKey={5} href="#">
+      Comments
+    </NavItem>
+    <NavDropdown eventKey={6} title="Ratings" id="basic-nav-dropdown">
+      <MenuItem eventKey={6.1}>Reviews</MenuItem>
+      <MenuItem eventKey={6.2}>Menu Items</MenuItem>
     </NavDropdown>
   </Nav>
 </Navbar>);
