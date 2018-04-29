@@ -17,27 +17,33 @@ const MyMap = ({ markers, handleMarkerClick, onInfoWindowClose }) => {
 			defaultOptions={{ styles: mapStyles }}
 		>
 			{markers.map((marker, index) => {
-				const lat = parseFloat(
-					(((marker.locations || {}).location || [])[0] || {}).lat
-				);
-				const lng = parseFloat(
-					(((marker.locations || {}).location || [])[0] || {}).lng
-				);
-				return (
-					<Marker
-						onClick={handleMarkerClick.bind(this, marker)}
-						key={index}
-						position={{ lat, lng }}
-					>
-						{marker.showInfo && (
-							<InfoWindow onCloseClick={onInfoWindowClose.bind(this, marker)}>
-								<div>
-									<a href="/topics">{marker.name}</a>
-								</div>
-							</InfoWindow>
-						)}
-					</Marker>
-				);
+				if (
+					marker.type === 'Food Cart' ||
+					marker.type === 'Snack Bar' ||
+					marker.type === 'Mobile Food Truck'
+				) {
+					const lat = parseFloat(
+						(((marker.locations || {}).location || [])[0] || {}).lat
+					);
+					const lng = parseFloat(
+						(((marker.locations || {}).location || [])[0] || {}).lng
+					);
+					return (
+						<Marker
+							onClick={handleMarkerClick.bind(this, marker)}
+							key={index}
+							position={{ lat, lng }}
+						>
+							{marker.showInfo && (
+								<InfoWindow onCloseClick={onInfoWindowClose.bind(this, marker)}>
+									<div>
+										<a href="/topics">{marker.name}</a>
+									</div>
+								</InfoWindow>
+							)}
+						</Marker>
+					);
+				}
 			})}
 		</GoogleMap>
 	);
