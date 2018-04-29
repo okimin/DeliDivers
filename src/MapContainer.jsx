@@ -9,6 +9,7 @@ class MyMapContainer extends Component {
 		super();
 		this.handleMarkerClick = this.handleMarkerClick.bind(this);
 		this.onInfoWindowClose = this.onInfoWindowClose.bind(this);
+		this.handleMapLoad = this.handleMapLoad.bind(this);
 	}
 
 	handleMarkerClick(targetMarker) {
@@ -39,6 +40,17 @@ class MyMapContainer extends Component {
 		});
 	}
 
+	handleMapLoad(map, _window = window) {
+		const { LatLngBounds } = _window.google.maps;
+		const bounds = new LatLngBounds();
+		this.state.markers.forEach(marker =>
+			bounds.extend({ lat: marker.lat, lng: marker.lon })
+		);
+		if (this.state.markers.length) {
+			if (this.state.markers.length > 1) map.fitBounds(bounds, 15);
+		}
+	}
+
 	componentWillMount() {
 		items.on('value', snap => this.setState({ markers: snap.val() }));
 	}
@@ -49,6 +61,7 @@ class MyMapContainer extends Component {
 				markers={this.state.markers}
 				handleMarkerClick={this.handleMarkerClick}
 				onInfoWindowClose={this.onInfoWindowClose}
+				handleMapLoad={this.handleMapLoad}
 			/>
 		);
 	}

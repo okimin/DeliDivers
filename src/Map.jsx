@@ -9,11 +9,17 @@ import {
 	InfoWindow,
 } from 'react-google-maps';
 
-const MyMap = ({ markers, handleMarkerClick, onInfoWindowClose }) => {
+const MyMap = ({
+	markers,
+	handleMarkerClick,
+	handleMapLoad,
+	onInfoWindowClose,
+}) => {
 	return (
 		<GoogleMap
+			ref={handleMapLoad}
 			defaultZoom={12}
-			defaultCenter={{ lat: 40.7128, lng: -74.006 }}
+			defaultCenter={{ lat: 40.766877, lng: -73.973173 }}
 			defaultOptions={{ styles: mapStyles }}
 		>
 			{markers.map((marker, index) => {
