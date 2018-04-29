@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import logo from './logo.svg';
 import './App.css';
-import MyMapComponent from './Map';
+import MyMapComponent from './MapContainer';
 import DeliStore from './DeliStore';
 import NavBar from './NavBar.jsx';
 import Users from './Users.jsx';
@@ -11,7 +11,7 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div>	
+				<div>
 					<NavBar />
 					<Route exact path="/" component={Home} />
 					<Route path="/about" component={About} />
@@ -26,7 +26,7 @@ class App extends Component {
 }
 const Mapper = () => (
 	<div>
-		<MyMapComponent isMarkerShown={true} />
+		<MyMapComponent />
 	</div>
 );
 const Home = () => (
