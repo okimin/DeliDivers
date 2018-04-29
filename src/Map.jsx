@@ -6,44 +6,42 @@ import {
 	withGoogleMap,
 	GoogleMap,
 	Marker,
+	InfoWindow,
 } from 'react-google-maps';
-import { items } from './index';
 
-class MyMap extends Component {
-	constructor() {
-		super();
-		this.state = {
-			markers: [],
-		};
-	}
-
-	componentDidMount() {
-		const markers = items.on('value', snap =>
-			this.setState({ markers: snap.val() })
-		);
-	}
-
-	render() {
-		return (
-			<GoogleMap
-				defaultZoom={12}
-				defaultCenter={{ lat: 40.7128, lng: -74.006 }}
-				defaultOptions={{ styles: mapStyles }}
-			>
-				{this.props.isMarkerShown &&
-					this.state.markers.map((marker, index) => {
-						const lat = parseFloat(
-							(((marker.locations || {}).location || [])[0] || {}).lat
-						);
-						const lng = parseFloat(
-							(((marker.locations || {}).location || [])[0] || {}).lng
-						);
-						return <Marker key={index} position={{ lat, lng }} />;
-					})}
-			</GoogleMap>
-		);
-	}
-}
+const MyMap = ({ markers, handleMarkerClick, onInfoWindowClose }) => {
+	return (
+		<GoogleMap
+			defaultZoom={12}
+			defaultCenter={{ lat: 40.7128, lng: -74.006 }}
+			defaultOptions={{ styles: mapStyles }}
+		>
+			{markers.map((marker, index) => {
+				const lat = parseFloat(
+					(((marker.locations || {}).location || [])[0] || {}).lat
+				);
+				const lng = parseFloat(
+					(((marker.locations || {}).location || [])[0] || {}).lng
+				);
+				return (
+					<Marker
+						onClick={handleMarkerClick.bind(this, marker)}
+						key={index}
+						position={{ lat, lng }}
+					>
+						{marker.showInfo && (
+							<InfoWindow onCloseClick={onInfoWindowClose.bind(this, marker)}>
+								<div>
+									<a href="/topics">{marker.name}</a>
+								</div>
+							</InfoWindow>
+						)}
+					</Marker>
+				);
+			})}
+		</GoogleMap>
+	);
+};
 
 const MyMapComponent = compose(
 	withProps({
