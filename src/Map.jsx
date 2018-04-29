@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { compose, withProps } from 'recompose';
 import mapStyles from './mapStyles.json';
 import {
@@ -46,7 +46,7 @@ const MyMap = ({ markers, handleMarkerClick, onInfoWindowClose }) => {
 const MyMapComponent = compose(
 	withProps({
 		googleMapURL:
-			'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places',
+			'https://maps.googleapis.com/maps/api/js?key=AIzaSyBP6JSmxhchCK_bt9Govjc4WmTdcbo1fl0&v=3.exp&libraries=geometry,drawing,places',
 		loadingElement: <div style={{ height: `100%` }} />,
 		containerElement: <div style={{ height: `65vh` }} />,
 		mapElement: <div style={{ height: `100%` }} />,
