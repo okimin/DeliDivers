@@ -5,6 +5,7 @@ import './App.css';
 import MyMapComponent from './Map';
 import DeliStore from './DeliStore';
 import NavBar from './NavBar.jsx';
+import Users from './Users.jsx';
 
 class App extends Component {
 	render() {
@@ -17,6 +18,7 @@ class App extends Component {
 					<Route path="/topics" component={Topics} />
 					<Route path="/map" component={Mapper} />
 					<Route path="/store" component={DeliStore} />
+					<Route path="/user" component={Users} />
 				</div>
 			</Router>
 		);

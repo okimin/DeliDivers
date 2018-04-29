@@ -25,12 +25,8 @@ const NavBar = () =>(
       <Link to="/store"> Delis </Link>
     </NavItem>
     <NavItem eventKey={5} href="#">
-      Comments
+    <Link to="/user"> Profile </Link>
     </NavItem>
-    <NavDropdown eventKey={6} title="Ratings" id="basic-nav-dropdown">
-      <MenuItem eventKey={6.1}>Reviews</MenuItem>
-      <MenuItem eventKey={6.2}>Menu Items</MenuItem>
-    </NavDropdown>
   </Nav>
 </Navbar>);
 
