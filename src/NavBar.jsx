@@ -22,11 +22,14 @@ const NavBar = () =>(
       <Link to="/map"> Map </Link>
     </NavItem>
     <NavItem eventKey={4} href="#">
+      <Link to="/store"> Delis </Link>
+    </NavItem>
+    <NavItem eventKey={5} href="#">
       Comments
     </NavItem>
-    <NavDropdown eventKey={5} title="Ratings" id="basic-nav-dropdown">
-      <MenuItem eventKey={5.1}>Reviews</MenuItem>
-      <MenuItem eventKey={5.2}>Menu Items</MenuItem>
+    <NavDropdown eventKey={6} title="Ratings" id="basic-nav-dropdown">
+      <MenuItem eventKey={6.1}>Reviews</MenuItem>
+      <MenuItem eventKey={6.2}>Menu Items</MenuItem>
     </NavDropdown>
   </Nav>
 </Navbar>);
